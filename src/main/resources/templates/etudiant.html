@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+	layout:decorator="template1">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Comptes</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/mystyle.css"
+	th:href="@{/css/mystyle.css}" />
+
+</head>
+<body layout:fragment="content">
+	<div>
+<div class="col-md-6">
+			<div class="panel panel-primary" th:if="${etudiant}">
+				<div class="panel-heading">Profil de l'etudiant</div>
+				<div class="panel-body">
+				<div class="form-group">
+					<label class="control-label">Vous avez terminer  l'examen</label>
+				</div>
+<!-- 				<div class="form-group"> -->
+<!-- 					<label th:text="${res}"></label> -->
+<!-- 						</div> -->
+					
+				<div class="form-group">
+					<label class="control-label">nom : </label> <label
+						th:text="${etudiant.nom}"></label>
+				</div>
+				<div class="form-group">
+					<label class="control-label">niveau d'etudes: </label> <label
+						th:text="${etudiant.niveauEtudes}"></label>
+				</div>
+				<div class="form-group">
+					<label class="control-label">login </label> <label
+						th:text="${etudiant.login}"></label>
+						</div>
+						<div class="form-group">
+					<label class="control-label">Resultat: </label> 
+					<label th:text="${res}"></label>
+						</div>
+						
+				</div>
+			<!-- 	<div class="form-group">
+					<label class="control-label">Date Creation: </label> <label
+						th:text="${compte.dateCreation}"></label>
+				</div>   
+				<div class="form-group">
+					<label class="control-label">Exams: </label> <label
+						th:text="${compte.class.simpleName}"></label>
+					 on utilse simpleName pour qu'il nous affiche seulemnt le nom de la classe 
+				</div>   -->
+				
+			</div>
+		</div>
+			</div>
+
+
+	
+</body>
+</html>
+		

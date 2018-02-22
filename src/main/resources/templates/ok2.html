@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+	layout:decorator="template1">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Comptes</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/mystyle.css"
+	th:href="@{/css/mystyle.css}" />
+	<script type="text/javascript" src="../static/js/njs.js" th:src="@{/js/njs.js}"></script>
+	<script type="text/javascript" src="../static/js/jquery-3.2.1.min.js" th:src="@{/js/jquery-3.2.1.min.js}"></script>
+	<script src="/js/postrequest.js"></script>
+	<script type="text/javascript">
+		var i=0;
+		function augmenter() {
+			i++;
+			document.getElementById("timer").innerHTML = i;
+		}
+		setInterval("augmenter()", 1000);
+	</script>
+	<script type="text/javascript">
+	//var Nq= httpServletRequest.getParameter('idQuestion');
+	//var Ne= httpServletRequest.getParameter('idExamen');
+	
+      function RedirectionJavascript(){
+    	 // window.alert("sometext");
+     
+    	  var numQ=document.getElementById("numero1").textContent;
+    	   //alert(numQ);
+    	   document.open();
+    	  document.write('<a th:href="@{passer1((idE=${QuestionN.examen.getId()},idQ=${QuestionId}))}">Suivant </a>');
+    	// document.getElementById("header").innerHTML="<p>je suis mpohqmed</p>";
+		//document.write('<html><body> <a href="http://google.com">goooo</a></body></html>');
+    	  document.close();
+      }
+      
+   </script>
+  
+</head>
+<body layout:fragment="content" onLoad="setTimeout('RedirectionJavascript()', 10000)">
+	<div id="header">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Bienvenue</div>
+				<div class="panel-body ">
+				
+					<p>Qestions</p>
+					
+					
+<!-- 					<div th:each="ch:${NumResponses}"> -->
+					
+					<form th:action="@{/saveReponse1}" method="post">
+					
+						<div >
+						<label  th:text="${num}" id="numero1"></label>
+						<div>
+						<p id="timer">0</p>
+						
+ </div>
+						
+					 
+						
+						
+						
+						<label  th:text="${QuestionN.question}"></label>
+						
+						<p></p>
+<!-- 						<input type="number" class="hide" th:value="${#httpServletRequest.getParameter('idQuestion')}" name="idQuestion"/> -->
+						<input type="number" class="hide" th:value="${QuestionN.id}" name="idQuestion"/>
+						<input type="number" class="hide" th:value="${num}" id="numero"/>
+						<input type="number" class="hide" th:value="${QuestionN.question}" name="question"/>
+						<input type="number" class="hide" th:value="${QuestionN.examen.getId()}" name="idExamen"/>
+						<input class="hide" type="radio" name="choice"  th:value="${QuestionN.choix1}" checked="checked"/> 
+						<input type="radio" name="choice" th:text="${QuestionN.choix1}" th:value="${QuestionN.choix1}" /> 
+						<p></p>
+						<input type="radio" name="choice" th:text="${QuestionN.choix2}" th:value="${QuestionN.choix2}" /> 
+						<p></p>
+						
+						<input type="radio" name="choice" th:text="${QuestionN.choix3}" th:value="${QuestionN.choix3}" />
+						<p></p>
+							<button type="submit" class=" btn btn-primary" >valider la reponse</button>
+							
+							
+							<script type="text/javascript">
+	                          var numQ=document.getElementsById("numero").textContent;
+	                         if(numQ>7){window.location.replace("http://stackoverflow.com");}
+	
+                           </script>
+						</div>
+			     </form>
+			     </div></div></div>
+			
+			<div> <!--
+				<table class="table table-striped">
+					<tr>
+						<th>Code</th>
+						<th>Nom</th>
+						<th>Email</th>
+						<th>Nom</th>
+						<th>Email</th>
+						<th>Nom</th>
+						<th>Email</th>
+					</tr>
+					<tr th:each="c:${listQuestions}">
+						<td th:text="${c.id}"></td>
+						<td th:text="${c.question}"></td>
+						<td th:text="${c.choix1}"></td>
+						<td th:text="${c.choix2}"></td>
+						<td th:text="${c.choix3}"></td>
+													<td th:text="${o.niveauEtudes}"></td>
+					</tr>
+				</table>    -->
+			</div>
+		</div>
+       <script th:inline="javascript">
+    var message = [[${duree}]];
+    console.log(message);
+    document.getElementById('chronotime1').innerHTML =message.toString();
+</script>         
+</body>
+</html>

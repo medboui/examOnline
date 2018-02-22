@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+	layout:decorator="template1">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Comptes</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/mystyle.css"
+	th:href="@{/css/mystyle.css}" />
+
+</head>
+<body layout:fragment="content">
+	<div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+				<div class="panel-heading">Bienvenue</div>
+				<div class="panel-body ">
+				<!--  	<table class="table table-striped">
+						<tr>
+							<th>Code</th>
+							<th>Nom</th>
+							<th>Email</th>
+						</tr>
+						<tr th:each="o:${listExamens}">
+							<td th:text="${o.id}"></td>
+							<td th:text="${o.nomMatiere}"></td>
+							<td th:text="${o.niveauEtudes}"></td>
+						</tr>
+						
+					</table> -->
+					<p>Qestions</p>
+					
+					<div th:each="ch:${listQuestions}">
+					<form th:action="@{/saveReponse1}" method="post">
+					
+						<div>
+						<label  th:text="${ch.question}"></label>
+						<p></p>
+<!-- 						<input type="number" class="hide" th:value="${#httpServletRequest.getParameter('idQuestion')}" name="idQuestion"/> -->
+						<input type="number" class="hide" th:value="${ch.id}" name="idQuestion"/>
+						<input type="number" class="hide" th:value="${ch.examen.getId()}" name="idExamen"/>
+						<input class="hide" type="radio" name="choice"  th:value="${ch.choix1}" checked="checked"/> 
+						<input type="radio" name="choice" th:text="${ch.choix1}" th:value="${ch.choix1}" /> 
+						<p></p>
+						<input type="radio" name="choice" th:text="${ch.choix2}" th:value="${ch.choix2}" /> 
+						<p></p>
+						
+						<input type="radio" name="choice" th:text="${ch.choix3}" th:value="${ch.choix3}" />
+						<p></p>
+							<button type="submit" class=" btn btn-primary" >valider la reponse</button>
+							</div>
+			     </form>
+			     </div></div>
+			
+			<div> <!--
+				<table class="table table-striped">
+					<tr>
+						<th>Code</th>
+						<th>Nom</th>
+						<th>Email</th>
+						<th>Nom</th>
+						<th>Email</th>
+						<th>Nom</th>
+						<th>Email</th>
+					</tr>
+					<tr th:each="c:${listQuestions}">
+						<td th:text="${c.id}"></td>
+						<td th:text="${c.question}"></td>
+						<td th:text="${c.choix1}"></td>
+						<td th:text="${c.choix2}"></td>
+						<td th:text="${c.choix3}"></td>
+													<td th:text="${o.niveauEtudes}"></td>
+					</tr>
+				</table>    -->
+			</div>
+		</div>
+
+	</div>
+
+	</div>
+
+	
+</body>
+</html>

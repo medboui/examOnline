@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultra.net.nz/thymeleaf/layout"
+	layout:decorator="template1">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Saisie d'un etudiant</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/mystyle.css"
+	th:href="@{/css/mystyle.css}" />
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /> -->
+</head>
+<body layout:fragment="content">
+	<div>
+		<div >
+			<div class="panel panel-primary">
+				<div class="panel-heading">Questions</div>
+				<div class="panel-body">
+				
+				<form th:action="@{SaveExamen2}" method="post" th:object="${question1}">
+						<div class="col-md-6 ">
+							<div class="form-group">
+							<div >
+							<!--   <span  th:text="${#httpServletRequest.getParameter('idExamen')}" 
+ 										class="form-control" ></span> -->
+<!-- 							<span th:each="p:${NumQuestions}"> --> -->
+							<span th:text="${NumQuestion}"></span> 
+<!-- 							</span> -->
+								<div class="form-group">
+								<span class="alert-info">
+									Entrer la Question: <label 
+										class="control-label panel panel-primary alert-danger" th:text="${#httpServletRequest.getParameter('NumQuestion')}"  name="j1"></label>
+									
+										 </span>
+										 <input type="number" class="hide" th:value="${#httpServletRequest.getParameter('idExamen')}" name="idExamen"/>
+										 <input type="text" class="hide" th:field="*{id}" name="id"/>
+										 <input type="number" class="hide" th:value="${#httpServletRequest.getParameter('NumQuestion')}"  name="NumQuestion" id="NumQuestion"/>
+										<input type="text"
+										th:field="*{enonce}" name="question" class="form-control" />
+										 
+									<!-- 			<span class="text-danger" th:errors="{question1.question}"></span> -->
+								</div>
+								<div class="form-group">
+									<label class="control-label">Premier choix</label> <input
+										type="text" th:field="*{choix1}" name="choix1"
+										class="form-control" />
+								</div>
+								<div class="form-group">
+									<label class="control-label">Deuxième choix</label> <input
+										type="text" th:field="*{choix2}" name="choix2"
+										class="form-control" />
+								</div>
+								<div class="form-group">
+									<label class="control-label">Troisième choix</label> <input
+										type="text" th:field="*{choix3}" name="choix3"
+										class="form-control" />
+								
+								</div>
+								<div class="form-group">
+									<label class="control-label">le choix correct</label> <input
+										type="text" th:field="*{bonChoix}" name="bonChoix"
+										class="form-control" />
+								</div>
+							
+                   <button type="submit" class="btn btn-primary">Save</button> </div>
+                   </div>
+                   </div>
+                   <script type="text/javascript">var x=document.getElementById('NumQuestion');
+					 if (x==10){
+                    
+                   alert("Hello! I am an alert box!!");}</script>
+                  
+                  
+					</form> 
+					 
+                   </div>
+
+
+
+
+
+						<!-- ************************************* -->
+						
+						
+							
+									</div>
+			</div>
+		</div>
+</body>
+</html>
